@@ -1,0 +1,152 @@
+body{
+  background-color:#FAEBD7;
+}
+
+header {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+header h2 {
+    font-family: Arial;
+    font-weight: bold;
+    color: #A9A9A9;
+}
+
+header #newgame {
+    margin: auto;
+    font-family: Arial;
+    background-color: #8f7a66;
+    color: white;
+    font-size: 1.5vw;
+    padding: 5px;
+    border-radius: 8px;
+    margin-right: 10%
+}
+
+#scorediv{
+  border-radius: 10%;
+  background-color: #ccc0b3;
+  text-align: center;
+  padding:10px;
+  display: inline-block;
+}
+
+header p {
+    font-family: Arial;
+    font-size: 1.5vw;
+    margin: auto;
+    color: white;
+}
+
+.game-board{
+  position: relative;
+  margin-top: 15px;
+  width: 310px;
+  height: 310px;
+  text-align: center;
+  background-color: #bbada0;
+  border-radius: 5%;
+  padding: 10px;
+  margin: auto;
+}
+
+.number-board,.grid-board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+
+}
+
+.grid-row{
+  display: flex;
+  height: 23.5%;
+  margin-bottom: 2%;
+}
+
+.grid-cell {
+    width: 23.5%;
+    border-radius: 10%;
+    margin-right: 1%;
+    margin-left: 1%;
+    background-color: #ccc0b3;
+}
+
+.number-cell {
+    border-radius: 10%;
+    width: 23.5%;
+    height: 23.5%;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+}
+
+
+.number-cell[data-num="2"],
+.number-cell[data-num="4"] {
+    color: #6e665e;
+}
+
+.number-cell[data-num="128"],
+.number-cell[data-num="256"],
+.number-cell[data-num="512"] {
+    font-size: 45px;
+}
+
+.number-cell[data-num="1024"],
+.number-cell[data-num="2048"] {
+    font-size: 33px;
+}
+
+.number-cell[data-num="2"] {
+    background-color: #f9f4eb;
+}
+
+.number-cell[data-num="4"] {
+    background-color: #f3e9d8;
+}
+
+.number-cell[data-num="8"] {
+    background-color: #f4bc8a;
+}
+
+.number-cell[data-num="16"] {
+    background-color: #f48e57;
+}
+
+.number-cell[data-num="32"] {
+    background-color: #f67655;
+}
+
+.number-cell[data-num="64"] {
+    background-color: #f54a24;
+}
+
+.number-cell[data-num="128"] {
+    background-color: #f0d78f;
+}
+
+.number-cell[data-num="256"] {
+    background-color: #f0d375;
+}
+
+.number-cell[data-num="512"] {
+    background-color: #ecc546;
+}
+
+.number-cell[data-num="1024"] {
+    background-color: #ebbf2d;
+}
+
+.number-cell[data-num="2048"] {
+    background-color: #ebb914;
+}
