@@ -37,3 +37,14 @@ function updateNum(x, y, index){
   num.style.top = tuple.x.toString() + "px";
   num.style.left = tuple.y.toString() + "px";
 }
+
+function updateVal(index, val){
+  var num = document.querySelector('.number-cell[data-index="' + index + '"]');
+  num.innerHTML = val;
+  num.setAttribute('data-num', val);
+}
+
+function removeNum(index){
+  var num = document.querySelector('.number-cell[data-index="' + index + '"]');
+  num.remove();
+}

@@ -1,6 +1,7 @@
 var gridboard = [];
 var score = 0;
-var indexboard = []
+var indexboard = [];
+var has_changed = new Array(4);
 
 function newGame(){
   initGame();
@@ -40,7 +41,7 @@ function generateNumber(){
   if (count == 30){
     outter_loop: for (let i=0; i < 4; i++){
       for (let j=0; j < 4; j++){
-        if (board[i][j] == 0){
+        if (gridboard[i][j] == 0){
           row = i;
           col = j;
           break outter_loop;
@@ -58,6 +59,9 @@ function generateNumber(){
 function moveLeft(){
   var move = false;
   for (var i = 0; i < 4; i++){
+      for (let g = 0; g < 4; g++){
+        has_changed[g] = false;
+      }
           for (var j = 1; j < 4; j++) {
               if (gridboard[i][j] != 0) {
                   let old_index = indexboard[i][j];
@@ -74,6 +78,14 @@ function moveLeft(){
                           move = true;
                       }
                     }
+                    if (old_y > 0 && gridboard[i][old_y] == gridboard[i][old_y-1] && !has_changed[old_y-1]) {
+                        gridboard[i][old_y-1] += gridboard[i][old_y];
+                        gridboard[i][old_y] = 0;
+                        updateVal(indexboard[i][old_y-1], gridboard[i][old_y-1]);
+                        removeNum(indexboard[i][old_y]);
+                        has_changed[old_y-1] = true;
+                        move = true;
+                    }
 
                   }
               }
@@ -85,6 +97,9 @@ function moveLeft(){
 function moveRight(){
   var move = false;
   for (var i = 0; i < 4; i++){
+    for (let g = 0; g < 4; g++){
+      has_changed[g] = false;
+    }
           for (var j = 2; j >= 0; j--) {
               if (gridboard[i][j] != 0) {
                   let old_index = indexboard[i][j];
@@ -101,7 +116,14 @@ function moveRight(){
                           move = true;
                       }
                     }
-
+                    if (old_y < 3 && gridboard[i][old_y] == gridboard[i][old_y+1] && !has_changed[old_y+1]) {
+                        gridboard[i][old_y+1] += gridboard[i][old_y];
+                        gridboard[i][old_y] = 0;
+                        updateVal(indexboard[i][old_y+1], gridboard[i][old_y+1]);
+                        removeNum(indexboard[i][old_y]);
+                        has_changed[old_y+1] = true;
+                        move = true;
+                    }
                   }
               }
         }
@@ -111,6 +133,9 @@ function moveRight(){
 function moveUp(){
   var move = false;
   for (var j = 0; j < 4; j++){
+    for (let g = 0; g < 4; g++){
+      has_changed[g] = false;
+    }
           for (var i = 1; i < 4; i++) {
               if (gridboard[i][j] != 0) {
                   let old_index = indexboard[i][j];
@@ -127,8 +152,15 @@ function moveUp(){
                           move = true;
                       }
                     }
-
-                  }
+                    if (old_x > 0 && gridboard[old_x][j] == gridboard[old_x-1][j] && !has_changed[old_x-1]) {
+                        gridboard[old_x-1][j] += gridboard[old_x][j];
+                        gridboard[old_x][j] = 0;
+                        updateVal(indexboard[old_x-1][j], gridboard[old_x-1][j]);
+                        removeNum(indexboard[old_x][j]);
+                        has_changed[old_x-1] = true;
+                        move = true;
+                    }
+                }
               }
         }
     return move;
@@ -137,6 +169,9 @@ function moveUp(){
 function moveDown(){
   var move = false;
   for (var j = 0; j < 4; j++){
+    for (let g = 0; g < 4; g++){
+      has_changed[g] = false;
+    }
           for (var i = 2; i >= 0; i--) {
               if (gridboard[i][j] != 0) {
                   let old_index = indexboard[i][j];
@@ -153,7 +188,14 @@ function moveDown(){
                           move = true;
                       }
                     }
-
+                    if (old_x < 3 && gridboard[old_x][j] == gridboard[old_x+1][j] && !has_changed[old_x+1]) {
+                        gridboard[old_x+1][j] += gridboard[old_x][j];
+                        gridboard[old_x][j] = 0;
+                        updateVal(indexboard[old_x+1][j], gridboard[old_x+1][j]);
+                        removeNum(indexboard[old_x][j]);
+                        has_changed[old_x+1] = true;
+                        move = true;
+                    }
                   }
               }
         }

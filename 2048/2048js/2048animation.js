@@ -12,7 +12,7 @@ function genrateNumAnimate(x, y, n){
   numberboard.appendChild(number);
 }
 
-function addNumAnimate(){
+function addNumAnimate(index){
 
 }
 
