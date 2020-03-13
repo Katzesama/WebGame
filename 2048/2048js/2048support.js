@@ -1,3 +1,8 @@
+var score = 0;
+var gridboard = [];
+var indexboard = [];
+var has_changed = new Array(4);
+
 function getGridPosition(row, col){
   var gridrow = document.getElementsByClassName("grid-row")[row];
   var gridcell = gridrow.getElementsByClassName("grid-cell")[col];
@@ -16,11 +21,41 @@ function removeElementsByClass(className){
     }
 }
 
-function noSpace(board){
+function noSpace(){
   for (let i=0; i < 4; i++){
     for (let j=0; j < 4; j++){
-      if (board[i][j] == 0)
+      if (gridboard[i][j] == 0)
         return false;
+    }
+  }
+  return true;
+}
+
+function canMove(x1, y1, x2, y2) {
+    if (gridboard[x1][y1] != 0){
+      if (gridboard[x2][y2] == 0 || gridboard[x1][y1] == gridboard[x2][y2]){
+            return true;
+    }
+  }
+    return false;
+}
+
+
+function noMove(){
+  // left and up
+  for (var i = 0; i < 4; i++){
+      for (var j = 1; j < 4; j++){
+        if (canMove(i, j, i, j-1) || canMove(j, i, j-1, i)){
+          return false;
+        }
+      }
+    }
+    //right and down
+  for (var i = 0; i < 4; i++){
+        for (var j = 0; j < 3; j++){
+          if (canMove(i, j, i, j+1) || canMove(j, i, j+1, i)){
+            return false;
+          }
     }
   }
   return true;
@@ -47,4 +82,9 @@ function updateVal(index, val){
 function removeNum(index){
   var num = document.querySelector('.number-cell[data-index="' + index + '"]');
   num.remove();
+}
+
+function updateScoreBoard(){
+  var score_board = document.getElementById("score");
+  score_board.innerHTML = score;
 }
