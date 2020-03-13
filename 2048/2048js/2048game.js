@@ -8,6 +8,8 @@ function initGame(){
   removeElementsByClass("number-cell");
   var gameover = document.getElementsByClassName("game-over")[0];
   gameover.style.opacity = 0;
+  score = 0;
+  updateScoreBoard();
   var count = 0;
   for (var i=0; i < 4; i++){
     gridboard[i] = [];

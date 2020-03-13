@@ -19,7 +19,7 @@ header #newgame {
     font-family: Arial;
     background-color: #8f7a66;
     color: white;
-    font-size: 3vw;
+    font-size: 1.5vw;
     padding: 5px;
     border-radius: 8px;
     margin-right: 10%
@@ -32,7 +32,7 @@ header #newgame {
   padding:10px;
   display: inline-block;
   font-family: Arial;
-  font-size: 3vw;
+  font-size: 1.5vw;
   margin: auto;
   color: white;
   position: relative;
@@ -46,7 +46,7 @@ header #newgame {
   color: white;
   z-index: 50;
   opacity: 0;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .game-board{
